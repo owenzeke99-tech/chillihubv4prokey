@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070707">
+<title>ChilliHub V4 Pro | Key System</title>
+
+<style>
+:root {
+  --red: #ff2020;
+  --red2: #ff6868;
+  --bg: #070707;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(ellipse at top, #520707, transparent 55%),
+    radial-gradient(ellipse at bottom left, #310707, transparent 45%),
+    var(--bg);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(#ff3030 1px, transparent 1.5px);
+  background-size: 42px 42px;
+  opacity: .25;
+  animation: backgroundMove 15s linear infinite;
+}
+
+@keyframes backgroundMove {
+  to { background-position: 42px 84px; }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 8px #ff2020); }
+  50% { filter: drop-shadow(0 0 25px #ff2020); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes scan {
+  from { top: -30%; }
+  to { top: 120%; }
+}
+
+@keyframes ember {
+  0% {
+    transform: translateY(0) scale(.5);
+    opacity: 0;
+  }
+  20% { opacity: .9; }
+  100% {
+    transform: translateY(-110vh) translateX(35px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes buttonFlow {
+  to { background-position: 220% 0; }
+}
+
+@keyframes panelGlow {
+  0%, 100% { box-shadow: 0 0 20px #ff202022; }
+  50% { box-shadow: 0 0 35px #ff202055; }
+}
+
+/* Navigation */
+header {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 18px 7%;
+  background: #080707e8;
+  border-bottom: 1px solid #ff202077;
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  font-size: 25px;
+  font-weight: 900;
+  font-style: italic;
+  color: white;
+  text-shadow: 0 0 18px var(--red);
+  animation: glow 3s infinite;
+}
+
+.brand span { color: var(--red); }
+
+nav {
+  display: flex;
+  gap: 22px;
+}
+
+nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 14px;
+  transition: .3s;
+}
+
+nav a:hover { color: var(--red); }
+
+/* Main content */
+main {
+  width: min(900px, 92%);
+  margin: 55px auto 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.logo {
+  font-size: clamp(48px, 10vw, 90px);
+  font-weight: 1000;
+  font-style: italic;
+  letter-spacing: -4px;
+  color: white;
+  text-shadow: 0 0 12px white, 0 0 30px red, 0 0 60px red;
+  animation: glow 3s infinite;
+}
+
+.logo small {
+  display: block;
+  color: var(--red);
+  font-size: 25px;
+  letter-spacing: 8px;
+  margin-top: 8px;
+}
+
+.tagline {
+  margin-top: 20px;
+  color: #ffaaaa;
+  font-size: 11px;
+  letter-spacing: 5px;
+}
+
+/* Key panel */
+.panel {
+  position: relative;
+  overflow: hidden;
+  padding: 35px;
+  border: 1px solid var(--red);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #1d0808ee, #080707f5);
+  animation: panelGlow 4s infinite;
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  top: -30%;
+  background: linear-gradient(transparent, #ff202018, transparent);
+  animation: scan 7s linear infinite;
+  pointer-events: none;
+}
+
+h1 {
+  text-align: center;
+  color: #ffdddd;
+  font-size: clamp(22px, 4vw, 30px);
+  margin-bottom: 12px;
+  text-shadow: 0 0 15px red;
+}
+
+.subtitle {
+  text-align: center;
+  color: #c9b9b9;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+label {
+  display: block;
+  color: #ffaaaa;
+  font-size: 12px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.keybox {
+  display: flex;
+  gap: 10px;
+  padding: 9px;
+  border: 1px solid var(--red);
+  border-radius: 12px;
+  background: #080606;
+}
+
+.keybox input {
+  min-width: 0;
+  flex: 1;
+  padding: 12px 8px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 13px;
+  font-family: monospace;
+}
+
+button {
+  cursor: pointer;
+  font-weight: bold;
+  transition: .25s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+
+.copy {
+  padding: 12px 15px;
+  color: white;
+  border: 1px solid #ff5555;
+  border-radius: 9px;
+  background: #390b0b;
+}
+
+.activate {
+  display: block;
+  width: min(380px, 100%);
+  margin: 22px auto 0;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  background: linear-gradient(100deg, #850000, #f01818, #ff5656, #a80000);
+  background-size: 220% 100%;
+  animation: buttonFlow 4s linear infinite;
+  box-shadow: 0 0 25px #ff202044;
+}
+
+.status {
+  min-height: 24px;
+  margin-top: 15px;
+  color: #ff7777;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Feature cards */
+.features {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.feature {
+  padding: 20px 8px;
+  text-align: center;
+  border: 1px solid #ff303066;
+  border-radius: 12px;
+  background: #100707e8;
+  animation: float 5s ease-in-out infinite;
+  transition: .3s;
+}
+
+.feature:nth-child(2) { animation-delay: .4s; }
+.feature:nth-child(3) { animation-delay: .8s; }
+.feature:nth-child(4) { animation-delay: 1.2s; }
+.feature:nth-child(5) { animation-delay: 1.6s; }
+
+.feature:hover {
+  border-color: var(--red);
+  box-shadow: 0 0 22px #ff202044;
+}
+
+.symbol {
+  color: var(--red);
+  font-size: 30px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 15px red;
+}
+
+.feature b {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.feature p {
+  color: #bfaeae;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+footer {
+  margin: 32px 0 20px;
+  text-align: center;
+  color: #968787;
+  font-size: 12px;
+}
+
+footer strong {
+  display: block;
+  margin-top: 12px;
+  color: var(--red);
+  letter-spacing: 5px;
+  font-size: 10px;
+}
+
+/* Floating embers */
+.embers {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ember {
+  position: absolute;
+  bottom: -20px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ff3030;
+  box-shadow: 0 0 12px 3px #ff202088;
+  left: var(--left);
+  animation: ember var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+/* Mobile responsive */
+@media (max-width: 700px) {
+  header { padding: 18px 5%; }
+  .brand { font-size: 20px; }
+  nav { gap: 12px; }
+  nav a { font-size: 12px; }
+
+  main { margin-top: 38px; }
+  .panel { padding: 23px 17px; }
+  .features { grid-template-columns: repeat(2, 1fr); }
+  .feature:last-child { grid-column: 1 / -1; }
+  .keybox { flex-wrap: wrap; }
+  .keybox input { flex-basis: 100%; }
+  .copy { width: 100%; }
+  .tagline { letter-spacing: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="embers" id="embers"></div>
+
+<header>
+  <div class="brand">✦ <span>Chilli</span>Hub</div>
+  <nav>
+    <a href="#home">⌂ Home</a>
+    <a href="#key">⚿ Key</a>
+    <a href="#support">Support</a>
+    <a href="#support">Discord</a>
+  </nav>
+</header>
+
+<main id="home">
+
+  <section class="hero">
+    <div class="logo">
+      ChilliHub
+      <small>V4 PRO</small>
+    </div>
+    <div class="tagline">PLAY • EXPLORE • ENJOY</div>
+  </section>
+
+  <section class="panel" id="key">
+    <h1>⚿ Enter Your Key to Get Started</h1>
+
+    <p class="subtitle">
+      Your ChilliHub V4 Pro key is ready below.
+      Copy it to continue.
+    </p>
+
+    <label for="keyValue">YOUR KEY</label>
+
+    <div class="keybox">
+      <input
+        id="keyValue"
+        value="ChilliHubV4ProJakwhwhKalalwjjwwllLLwowjwoowbwpb"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Your ChilliHub key"
+      >
+
+      <button class="copy" id="copyBtn" type="button">
+        ▣ Copy Key
+      </button>
+    </div>
+
+    <button class="activate" id="activateBtn" type="button">
+      ⚡ Activate Now →
+    </button>
+
+    <div class="status" id="status" aria-live="polite"></div>
+  </section>
+
+  <section class="features">
+
+    <article class="feature">
+      <div class="symbol">ϟ</div>
+      <b>Stable Performance</b>
+      <p>A lightweight and easy-to-use interface.</p>
+    </article>
+
+    <article class="feature">
+      <div class="symbol">⬟</div>
+      <b>Enhanced Security</b>
+      <p>Keep your key information protected.</p>
+    </article>
+
+    <article class="feature">
+      <div class="symbol">◉</div>
+      <b>Optimized Speed</b>
+      <p>Enjoy a smooth experience.</p>
+    </article>
+
+    <article class="feature" id="support">
+      <div class="symbol">☏</div>
+      <b>Quick Support</b>
+      <p>Add your support link here.</p>
+    </article>
+
+    <article class="feature">
+      <div class="symbol">∞</div>
+      <b>Easy to Use</b>
+      <p>Copy your key with one click.</p>
+    </article>
+
+  </section>
+
+  <footer>
+    © 2026 ChilliHub V4 Pro. All rights reserved.
+    <strong>MORE POWER — MORE FUN</strong>
+  </footer>
+
+</main>
+
+<script>
+// Generate floating red embers
+const emberLayer = document.getElementById("embers");
+
+for (let i = 0; i < 34; i++) {
+  const ember = document.createElement("span");
+  ember.className = "ember";
+
+  ember.style.setProperty(
+    "--left", Math.random() * 100 + "%"
+  );
+
+  ember.style.setProperty(
+    "--duration", 7 + Math.random() * 11 + "s"
+  );
+
+  ember.style.setProperty(
+    "--delay", -Math.random() * 16 + "s"
+  );
+
+  emberLayer.appendChild(ember);
+}
+
+// Copy key to clipboard
+const keyInput = document.getElementById("keyValue");
+const statusBox = document.getElementById("status");
+
+document.getElementById("copyBtn").addEventListener(
+  "click", async () => {
+    const value = keyInput.value.trim();
+
+    if (!value) {
+      statusBox.textContent = "Please enter a key first.";
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(value);
+      statusBox.textContent = "✓ Key copied successfully!";
+    } catch (error) {
+      keyInput.focus();
+      keyInput.select();
+
+      const success = document.execCommand("copy");
+
+      statusBox.textContent = success
+        ? "✓ Key copied successfully!"
+        : "Please select and copy the key manually.";
+    }
+  }
+);
+
+// Demo activation button
+document.getElementById("activateBtn").addEventListener(
+  "click", () => {
+    statusBox.textContent =
+      "Demo interface only. Connect a backend to verify real keys.";
+  }
+);
+</script>
+
+</body>
+</html>
